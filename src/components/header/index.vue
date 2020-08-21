@@ -38,7 +38,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="submit">确 定</el-button>
-        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button @click="close">取 消</el-button>
       </span>
     </el-dialog>
   </div>
@@ -124,6 +124,15 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    close() {
+      this.dialogVisible = false
+      this.ruleForm = {
+        newPass: "",
+        checkPass: "",
+        pass: "",
+        userName: "",
+      };
     },
     changePassword() {
       this.ruleForm.userName = sessionStorage.userName;

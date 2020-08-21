@@ -236,13 +236,23 @@ body {
 #app .switchStyle .el-switch__label--left {
   z-index: 9;
   left: 21px;
+  top: 0;
 }
 #app .switchStyle .el-switch__label--right {
   z-index: 9;
   left: 0px;
+  top: 0;
 }
 #app .switchStyle .el-switch__label.is-active {
   display: block;
+}
+
+#app .switchStyle.el-switch {
+  line-height: 0;
+}
+
+#app .el-switch__label * {
+  line-height: 20px;
 }
 
 #app .el-switch__label.is-active {
@@ -441,5 +451,9 @@ body {
 background: rgb(26, 179, 148);
     border-color: transparent;
     color: #FFF;
+}
+
+#app .el-container.is-vertical {
+  flex-basis: 100%;
 }
 </style>

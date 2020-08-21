@@ -1,4 +1,6 @@
 module.exports = {
+    baseUrl: '/',
+    outputDir: 'admin',
     devServer: {
         proxy: {
             "/": {
