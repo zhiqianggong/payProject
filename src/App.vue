@@ -32,6 +32,7 @@ export default {
   },
   created() {
     if (sessionStorage.token) {
+      
       this.isLogin = false;
     } else {
       this.isLogin = true;
