@@ -52,8 +52,8 @@ export default {
     };
     return {
       ruleForm: {
-        pass: "xx666pay",
-        user: "xxpaymgr",
+        pass: "",
+        user: "",
       },
       rules: {
         pass: [{ validator: validatePass, trigger: "blur" }],
