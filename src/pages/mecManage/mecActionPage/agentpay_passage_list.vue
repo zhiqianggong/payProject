@@ -17,14 +17,14 @@
               <template slot-scope="scope">
                 <span
                   :style="{'color': (scope.row.agentFeeEvery  ? 'blue':'')}"
-                >{{scope.row.mchFeeType == 0 ? scope.row.agentFeeEvery ? scope.row.agentFeeEvery : '0'+'%' : scope.row.agentFeeEvery ? scope.row.agentFeeEvery : '0'+'元'}}</span>
+                >{{ scope.row.mchFeeType == 1 ? scope.row.agentFeeEvery+'%' : amountFormat(scope.row.agentFeeEvery)+'元/笔'}}</span>
               </template>
             </el-table-column>
             <el-table-column prop="mchFeeEvery" label="代付费率" min-width="100">
               <template slot-scope="scope">
                 <span
-                  :style="{'color': (scope.row.agentFeeEvery  ? 'blue':'')}"
-                >{{scope.row.mchFeeType == 0 ? scope.row.mchFeeType ? scope.row.mchFeeType : '0'+'%' : scope.row.mchFeeType ? scope.row.mchFeeType : '0'+'元'}}</span>
+                  :style="{'color': (scope.row.mchFeeEvery  ? 'blue':'')}"
+                >{{ scope.row.mchFeeType == 1 ? scope.row.feeRate+'%' : amountFormat(scope.row.mchFeeEvery)+'元/笔'}}</span>
               </template>
             </el-table-column>
             <el-table-column prop="maxEveryAmount" label="单笔限额" min-width="100">

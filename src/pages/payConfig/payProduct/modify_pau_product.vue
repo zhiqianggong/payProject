@@ -111,8 +111,8 @@
               <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
                 <el-form-item label="状态" label-width="130px">
                   <el-radio-group v-model="changeMecFrom.status">
-                    <el-radio border label="0">开启</el-radio>
-                    <el-radio border label="1">关闭</el-radio>
+                    <el-radio border label="1">开启</el-radio>
+                    <el-radio border label="0">关闭</el-radio>
                   </el-radio-group>
                 </el-form-item>
               </el-col>
@@ -261,7 +261,7 @@ export default {
         this.tableData.forEach(tableList=> {
           if(item.payPassageId == tableList.payPassageId) {
             arr.push({
-            payPassageId: tableList.id,
+            payPassageId: tableList.payPassageId,
             weight: tableList.weight,
           })
           }
@@ -380,8 +380,6 @@ export default {
               _this.tableData.forEach((item) => {
                 if (item.isCheck == 1) {
                   _this.$refs.table.toggleRowSelection(item);
-                } else {
-                  this.$refs.multipleTable.clearSelection();
                 }
               });
             });
@@ -413,7 +411,7 @@ export default {
   created() {
     this.getUserDetail();
     this.getPayType();
-  },
+  }
 };
 </script>
 

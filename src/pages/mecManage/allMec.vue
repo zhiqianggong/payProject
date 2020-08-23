@@ -159,6 +159,32 @@
       </span>
     </el-dialog>
     <el-dialog
+      title="删除商户"
+      :visible.sync="dialogDelete"
+      min-width="250px"
+      :before-close="handleClose"
+      v-dialogDrag
+    >
+      <el-row :gutter="10">
+        <el-form :model="changePassFrom">
+          <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+            <el-form-item label="商户id" label-width="100px">
+              <el-input v-model="mchId" disabled></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+            <el-form-item label="谷歌验证码" label-width="100px">
+              <el-input v-model="googleCode"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-form>
+      </el-row>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="changeDelete">确 定</el-button>
+        <el-button @click="closeDelete">取 消</el-button>
+      </span>
+    </el-dialog>
+    <el-dialog
       :title="amountTitle"
       :visible.sync="dialogAmount"
       width="650px"
@@ -167,11 +193,23 @@
     >
       <el-row :gutter="10">
         <el-form :model="amountFrom">
-          <el-alert class="reset-hint" type="success" :closable="false">        
-            <span style="margin-right:10px;" class="amount blue"><span>账户余额</span>：￥{{amountDetailBox.balance ? amountDetailBox.balance / 100 : 0}}</span>
-            <span style="margin-right:10px;" class="amount green"><span>代付金额</span>：￥{{amountDetailBox.agentpayBalance ? amountDetailBox.agentpayBalance / 100 : 0}}</span>
-            <span style="margin-right:10px;" class="amount red"><span>冻结金额</span>：￥{{amountDetailBox.frozenMoney ? amountDetailBox.frozenMoney / 100 : 0}}</span>
-            <span style="margin-right:10px;" class="amount yellow"><span>保证金额</span>：￥{{amountDetailBox.securityMoney ? amountDetailBox.securityMoney / 100 : 0}}</span>
+          <el-alert class="reset-hint" type="success" :closable="false">
+            <span style="margin-right:10px;" class="amount blue">
+              <span>账户余额</span>
+              ：￥{{amountDetailBox.balance ? amountDetailBox.balance / 100 : 0}}
+            </span>
+            <span style="margin-right:10px;" class="amount green">
+              <span>代付金额</span>
+              ：￥{{amountDetailBox.agentpayBalance ? amountDetailBox.agentpayBalance / 100 : 0}}
+            </span>
+            <span style="margin-right:10px;" class="amount red">
+              <span>冻结金额</span>
+              ：￥{{amountDetailBox.frozenMoney ? amountDetailBox.frozenMoney / 100 : 0}}
+            </span>
+            <span style="margin-right:10px;" class="amount yellow">
+              <span>保证金额</span>
+              ：￥{{amountDetailBox.securityMoney ? amountDetailBox.securityMoney / 100 : 0}}
+            </span>
           </el-alert>
           <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
             <el-form-item label="商户ID" label-width="100px">
@@ -239,6 +277,7 @@ export default {
       pageTotal: null,
       search: "",
       mchId: "",
+      googleCode: "",
       dialogAppDetail: false,
       dialogPassword: false,
       changePassFrom: {
@@ -252,6 +291,7 @@ export default {
         bizItem: "10",
         mchId: "",
       },
+      dialogDelete: false,
       isAdd: "",
       amountTitle: "",
       amountDetailBox: {
@@ -349,44 +389,37 @@ export default {
       this.pagesize = 10;
       this.getTableData();
     },
+    changeDelete() {
+      this.axios({
+        method: "post",
+        url: "/api/mch_info/deleteMch",
+        data: {
+          body: {
+            googleCode: this.googleCode,
+            mchId: this.mchId,
+          },
+          header: {
+            token: sessionStorage.token,
+            userName: sessionStorage.userName,
+          },
+        },
+      })
+        .then((res) => {
+          this.messageInfo(res);
+          if (res.data.code == 200) {
+            this.dialogDelete = false;
+            this.mchId = "";
+            this.googleCode = "";
+            this.getTableData();
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     deleteCurInfo(tableData) {
       this.mchId = tableData.mchId;
-      this.$confirm(`是否删除商户id为${this.mchId}的商户?`, "提示", {
-        cancelButtonText: "取消",
-        confirmButtonText: "确定",
-        type: "warning",
-      })
-        .then(() => {
-          this.axios({
-            method: "post",
-            url: "/api/mch_info/deleteMch",
-            data: {
-              body: {
-                mchId: this.mchId,
-              },
-              header: {
-                token: sessionStorage.token,
-                userName: sessionStorage.userName,
-              },
-            },
-          })
-            .then((res) => {
-              this.messageInfo(res);
-              if (res.data.code == 200) {
-                this.mchId = "";
-                this.getTableData();
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "已取消删除",
-          });
-        });
+      this.dialogDelete = true;
     },
     changeSwitch(row) {
       this.axios({
@@ -490,6 +523,7 @@ export default {
       }
     },
     handleClose(done) {
+      this.googleCode = "";
       this.mchId = "";
       this.changePassFrom = {
         password: "",
@@ -506,6 +540,10 @@ export default {
     closeDialog() {
       this.mchId = "";
       this.dialogPassword = false;
+    },
+    closeDelete() {
+      this.dialogDelete = false;
+      this.googleCode = "";
     },
     amountChange(row, isAdd) {
       this.amountFrom = {

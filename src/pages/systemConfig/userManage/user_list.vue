@@ -60,7 +60,22 @@
           >
             <el-table-column type="selection" width="55"></el-table-column>
             <el-table-column prop="userId" label="用户ID" min-width="100"></el-table-column>
-            <el-table-column prop="userName" label="用户名" min-width="100"></el-table-column>
+            <el-table-column prop="userName" label="用户名" min-width="120">
+              <template slot-scope="scope">
+                {{scope.row.userName}}
+                <span
+                  v-if="scope.row.isSuperAdmin == 1"
+                  style="    position: relative;
+                            display: inline-block;
+                            padding: 0 6px;
+                            font-size: 12px;
+                            text-align: center;
+                            background-color: #FF5722;
+                            color: #fff;
+                            border-radius: 2px;"
+                >超管</span>
+              </template>
+            </el-table-column>
             <el-table-column prop="nickName" label="用户昵称" min-width="100"></el-table-column>
             <el-table-column prop="createTime" label="创建时间" min-width="150">
               <template slot-scope="scope">

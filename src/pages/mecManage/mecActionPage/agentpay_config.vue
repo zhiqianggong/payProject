@@ -132,7 +132,7 @@ export default {
             this.getPayAccount();
             this.changeMecFrom = {
               // String(this.dataList.agentpayPassageId)
-              agentpayPassageId: "",
+              agentpayPassageId: this.dataList.agentpayPassageAccountId,
               mchFeeType: this.dataList.mchFeeType,
               agentpayPassageAccountId: this.dataList.agentpayPassageAccountId,
               agentFeeEvery: this.dataList.agentFeeEvery,
@@ -166,7 +166,7 @@ export default {
             mchId: this.dataList.mchId,
             passageName: this.dataList.passageName,
             status: Number(this.changeMecFrom.status),
-            mchFeeType: this.changeMecFrom.mchFeeType
+            mchFeeType: this.changeMecFrom.mchFeeType,
           },
           header: {
             token: sessionStorage.token,
@@ -178,6 +178,10 @@ export default {
           this.messageInfo(res);
           if (res.data.code == 200) {
             this.getUserDetail();
+            this.$router.push({
+              name: "agentpay_passage_list",
+              query: { id: this.$route.query.id },
+            });
           }
         })
         .catch((err) => {

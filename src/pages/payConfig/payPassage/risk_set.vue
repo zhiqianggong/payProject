@@ -116,9 +116,7 @@ export default {
               maxEveryAmount: this.dataList.maxEveryAmount | "0",
               minEveryAmount: this.dataList.minEveryAmount | "0",
               passageName: this.dataList.passageName,
-              riskStatus: this.dataList.riskStatus
-                ? String(this.dataList.riskStatus)
-                : "1",
+              riskStatus: String(this.dataList.riskStatus),
               tradeEndTime: this.dataList.tradeEndTime,
               tradeStartTime: this.dataList.tradeStartTime,
             };

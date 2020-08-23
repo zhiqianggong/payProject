@@ -265,7 +265,7 @@ export default {
     audit(row) {
       this.$router.push({
         name: "audit",
-        query: { id: row.infoId },
+        query: { id: row.id },
       });
     }
   },

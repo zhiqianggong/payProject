@@ -102,8 +102,8 @@
               <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
                 <el-form-item label="状态" label-width="130px">
                   <el-radio-group v-model="changeMecFrom.status">
-                    <el-radio border label="0">开启</el-radio>
-                    <el-radio border label="1">关闭</el-radio>
+                    <el-radio border label="1">开启</el-radio>
+                    <el-radio border label="0">关闭</el-radio>
                   </el-radio-group>
                 </el-form-item>
               </el-col>
@@ -150,7 +150,7 @@ export default {
   },
   methods: {
     modify(row, column, cell, event) {
-      console.log(row)
+      console.log(row);
       this.payPassageId = row.id;
       this.weight = row.weight;
     },
@@ -185,8 +185,13 @@ export default {
             this.changeMecFrom.ifMode = this.dataList.ifMode
               ? String(this.dataList.ifMode)
               : "1";
-            this.changeMecFrom.payPassageId = this.dataList.payPassageId ? Number(this.dataList.payPassageId) : "";
-            this.changeMecFrom.payPassageAccountId = this.dataList.payPassageAccountId ? Number(this.dataList.payPassageAccountId) : "";
+            this.changeMecFrom.payPassageId = this.dataList.payPassageId
+              ? Number(this.dataList.payPassageId)
+              : "";
+            this.changeMecFrom.payPassageAccountId = this.dataList
+              .payPassageAccountId
+              ? Number(this.dataList.payPassageAccountId)
+              : "";
             this.changeMecFrom.status = String(this.dataList.status);
             this.getPaySelect();
             this.getPayAccount();
@@ -202,18 +207,18 @@ export default {
         });
     },
     submitForm() {
-      let arr = []
-      this.curTableData.forEach(item=> {
-        this.tableData.forEach(tableList=> {
-          if(item.payPassageId == tableList.id) {
+      let arr = [];
+      this.curTableData.forEach((item) => {
+        this.tableData.forEach((tableList) => {
+          if (item.payPassageId == tableList.id) {
             arr.push({
-            payPassageId: tableList.id,
-            weight: tableList.weight,
-          })
+              payPassageId: tableList.id,
+              weight: tableList.weight,
+            });
           }
-        })
-      })
-      this.dataList.pollParam = JSON.stringify(arr)
+        });
+      });
+      this.dataList.pollParam = JSON.stringify(arr);
       this.axios({
         method: "post",
         url: "/api/mch_pay_passage/update",
@@ -306,7 +311,7 @@ export default {
         });
     },
     modelCheck(val) {
-      if(val == 2) {
+      if (val == 2) {
         this.getTableDeta();
       }
     },
@@ -317,7 +322,7 @@ export default {
         data: {
           body: {
             mchId: this.dataList.mchId,
-            productId: this.dataList.productId
+            productId: this.dataList.productId,
           },
           header: {
             token: sessionStorage.token,
@@ -328,13 +333,13 @@ export default {
         .then((res) => {
           if (res.data.code == 200) {
             this.tableData = res.data.body;
+            
             let _this = this;
             _this.$nextTick(function () {
               _this.tableData.forEach((item) => {
+                console.log(item.id);
                 if (item.LAY_CHECKED == 1) {
                   _this.$refs.table.toggleRowSelection(item);
-                } else {
-                  this.$refs.multipleTable.clearSelection();
                 }
               });
             });
@@ -360,7 +365,7 @@ export default {
       } else {
         this.curTableData = val;
       }
-    }
+    },
   },
   created() {
     this.getUserDetail();

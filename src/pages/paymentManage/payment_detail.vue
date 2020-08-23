@@ -264,7 +264,7 @@ export default {
         url: "/api/agentpay/get",
         data: {
           body: {
-            id: this.$route.query.id,
+            agentpayOrderId: this.$route.query.id,
           },
           header: {
             token: sessionStorage.token,

@@ -488,6 +488,46 @@ Vue.use(Router);
         name: 'telephone_sub_account',
         component: () => import('@/pages/topUpManage/telephoneConfig/telephone_sub_account')
     },
+    {
+        path: '/role_list',
+        name: 'role_list',
+        component: () => import('@/pages/systemConfig/roleManage/role_list')
+    },
+    {
+        path: '/resource_manage',
+        name: 'resource_manage',
+        component: () => import('@/pages/systemConfig/roleManage/resource_manage')
+    },
+    {
+        path: '/syslog',
+        name: 'syslog',
+        component: () => import('@/pages/systemConfig/roleManage/syslog')
+    },
+    {
+        path: '/change_role',
+        name: 'change_role',
+        component: () => import('@/pages/systemConfig/roleManage/change_role')
+    },
+    {
+        path: '/authority_manage',
+        name: 'authority_manage',
+        component: () => import('@/pages/systemConfig/roleManage/authority_manage')
+    },
+    {
+        path: '/resource_add',
+        name: 'resource_add',
+        component: () => import('@/pages/systemConfig/roleManage/resource_add')
+    },
+    {
+        path: '/resource_detail',
+        name: 'resource_detail',
+        component: () => import('@/pages/systemConfig/roleManage/resource_detail')
+    },
+    {
+        path: '/resource_modify',
+        name: 'resource_modify',
+        component: () => import('@/pages/systemConfig/roleManage/resource_modify')
+    },
  ]
 
  const router = new Router({

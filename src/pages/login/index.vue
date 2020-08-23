@@ -262,11 +262,11 @@ export default {
             },
             {
               resourceId: 33,
-              name: "/17",
+              name: "role_list",
             },
             {
               resourceId: 34,
-              name: "/18",
+              name: "resource_manage",
             },
             {
               resourceId: 35,
@@ -274,7 +274,7 @@ export default {
             },
             {
               resourceId: 125,
-              name: "/20",
+              name: "syslog",
             },
           ],
         },

@@ -1,6 +1,6 @@
 <template>
   <div>
-     <el-breadcrumb separator-class="el-icon-arrow-right">
+    <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/settlement_audit_list' }">结算审核列表</el-breadcrumb-item>
       <el-breadcrumb-item>结算审核</el-breadcrumb-item>
     </el-breadcrumb>
@@ -196,10 +196,10 @@ export default {
     getAppDetail() {
       this.axios({
         method: "post",
-        url: "/api/agentpay/get",
+        url: "/api/sett/get",
         data: {
           body: {
-            payOrderId: this.$route.query.id,
+            id: this.$route.query.id,
           },
           header: {
             token: sessionStorage.token,
@@ -268,7 +268,7 @@ export default {
               remitAmount: dataList.remitAmount,
               remitRemark: dataList.remitRemark,
               settAmount: dataList.settAmount,
-              settDate: dataList.settDate,
+              settDate: this.getLocalTime(dataList.settDate),
               settFee: dataList.settFee,
               settOrderId: dataList.settOrderId,
               settStatus: dataList.settStatus,

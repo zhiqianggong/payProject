@@ -101,8 +101,8 @@
               >
                 <el-form-item label="风控状态" label-width="130px">
                   <el-radio-group v-model="changeMecFrom.riskStatus">
-                    <el-radio label="1">开启</el-radio>
-                    <el-radio label="0">关闭</el-radio>
+                    <el-radio border label="1">开启</el-radio>
+                    <el-radio border label="0">关闭</el-radio>
                   </el-radio-group>
                 </el-form-item>
               </el-col>
@@ -133,6 +133,7 @@ export default {
         updateTime: "",
         createTime: "",
         riskMode: "",
+        accountName: ""
       },
       detailList: null,
       tableData: [],
@@ -160,6 +161,7 @@ export default {
           if (res.data.code == 200) {
             this.dataList = res.data.body;
             this.changeMecFrom = {
+              accountName: this.dataList.accountName,
               maxDayAmount: this.dataList.maxDayAmount | 0,
               maxEveryAmount: this.dataList.maxEveryAmount | "0",
               minEveryAmount: this.dataList.minEveryAmount | "0",
