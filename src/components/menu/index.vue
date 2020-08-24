@@ -60,6 +60,8 @@ export default {
           "#/agentpay_config": "/allMec",
           "#/settleAccount": "/allMec",
           "#/dashboard": "/dashboard",
+          "#/pay_fees_list": "/allMec",
+          "#/pay_fees_config": "/allMec",
           "#/fund": "/fund",
           "#/fundDetail": "/fund",
           "#/appManage": "/appManage",

@@ -34,6 +34,16 @@ Vue.use(Router);
         component: () => import('@/pages/mecManage/mecActionPage/addMec')
     },
     {
+        path: '/pay_fees_config',
+        name: 'pay_fees_config',
+        component: () => import('@/pages/mecManage/payFeesManage/pay_fees_config')
+    },
+    {
+        path: '/pay_fees_list',
+        name: 'pay_fees_list',
+        component: () => import('@/pages/mecManage/payFeesManage/pay_fees_list')
+    },
+    {
         path: '/userInfo',
         name: 'userInfo',
         component: () => import('@/pages/currentUserInfo')

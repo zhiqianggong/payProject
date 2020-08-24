@@ -72,7 +72,7 @@
             </el-table-column>
             <el-table-column prop="securityMoney" label="保证金" min-width="80"></el-table-column>
             <el-table-column prop="userName" label="商户名称" width="100"></el-table-column>
-            <el-table-column label="操作" style="text-align: center;" min-width="500">
+            <el-table-column label="操作" style="text-align: center;" min-width="520">
               <template slot-scope="scope">
                 <el-button
                   class="reset-button yellow"
@@ -100,6 +100,11 @@
                   type="success"
                   @click="agentPayFun(scope.row)"
                 >代付</el-button>
+                <el-button
+                  class="reset-button green"
+                  type="success"
+                  @click="toPage(scope.row)"
+                >冲缴</el-button>
                 <el-button
                   class="reset-button green"
                   type="success"
@@ -595,6 +600,9 @@ export default {
     },
     payFun(row) {
       this.$router.push({ name: "pay_passage_list", query: { id: row.mchId } });
+    },
+    toPage(row) {
+      this.$router.push({ name: "pay_fees_list", query: { id: row.mchId } });
     },
     searchApp(row) {
       this.axios({
