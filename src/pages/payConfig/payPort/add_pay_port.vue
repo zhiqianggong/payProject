@@ -17,9 +17,9 @@
                   <el-select v-model="addTypeFrom.ifTypeCode" placeholder="请选择">
                     <el-option
                       v-for="item in payPort"
-                      :key="item.ifCode"
-                      :label="item.ifName"
-                      :value="item.ifCode"
+                      :key="item.ifTypeCode"
+                      :label="item.ifTypeName"
+                      :value="item.ifTypeCode"
                     ></el-option>
                   </el-select>
                 </el-form-item>
@@ -185,7 +185,7 @@ export default {
     getPayPort() {
       this.axios({
         method: "post",
-        url: "/api/config/common/pay_interface_all",
+        url: "/api/config/common/pay_interface_type_all",
         data: {
           body: {},
           header: {
