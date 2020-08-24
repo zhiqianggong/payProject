@@ -48,37 +48,42 @@ Vue.prototype.amountFormat = function (amount) {
 Vue.prototype.getLocalTime = function (timer) {
   var timestamp4 = new Date(timer);
   timestamp4 = timestamp4.toLocaleDateString().replace(/\//g, "-") + " " + timestamp4.toTimeString().substr(0, 8)
-  return timestamp4;  
+  return timestamp4;
 }
 
 Vue.prototype.mouseEventFun = function (container) {
   container.onwheel = function (event) {
-    event.preventDefault();
-    var step = 50;
-    if (container.clientHeight == container.scrollHeight || container.clientHeight + 1 == container.scrollHeight) {
-      if (event.deltaY < 0) {
-        //向上滚动鼠标滚轮，屏幕滚动条左移
-        container.scrollLeft -= step;
-      } else {
-        //向下滚动鼠标滚轮，屏幕滚动条右移
-        container.scrollLeft += step;
-      }
+    let fatherDom = document.getElementsByClassName('el-main')[0];
+    if (fatherDom.scrollHeight > fatherDom.clientHeight) {
+      // 有滚动条
     } else {
-      if (container.scrollHeight > container.clientHeight && Number(container.scrollTop.toFixed()) + container.clientHeight + 1 === container.scrollHeight) {
+      event.preventDefault();
+      var step = 50;
+      if (container.clientHeight == container.scrollHeight || container.clientHeight + 1 == container.scrollHeight) {
         if (event.deltaY < 0) {
-          if (container.scrollLeft == 0) {
-            container.scrollTop -= step;
-          } else {
-            container.scrollLeft -= step;
-          }
+          //向上滚动鼠标滚轮，屏幕滚动条左移
+          container.scrollLeft -= step;
         } else {
+          //向下滚动鼠标滚轮，屏幕滚动条右移
           container.scrollLeft += step;
         }
       } else {
-        if (event.deltaY < 0) {
-          container.scrollTop -= step;
+        if (container.scrollHeight > container.clientHeight && Number(container.scrollTop.toFixed()) + container.clientHeight + 1 === container.scrollHeight) {
+          if (event.deltaY < 0) {
+            if (container.scrollLeft == 0) {
+              container.scrollTop -= step;
+            } else {
+              container.scrollLeft -= step;
+            }
+          } else {
+            container.scrollLeft += step;
+          }
         } else {
-          container.scrollTop += step;
+          if (event.deltaY < 0) {
+            container.scrollTop -= step;
+          } else {
+            container.scrollTop += step;
+          }
         }
       }
     }
@@ -87,8 +92,8 @@ Vue.prototype.mouseEventFun = function (container) {
 
 
 Vue.prototype.filterTypeData = function (arr, curKey) {
-  let dataBox = arr.filter((item)=> {
-    if(item.key == curKey) {
+  let dataBox = arr.filter((item) => {
+    if (item.key == curKey) {
       return item.name
     }
   });
