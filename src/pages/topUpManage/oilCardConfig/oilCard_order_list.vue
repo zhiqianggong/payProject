@@ -1,13 +1,13 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/oilCard_order_list' }">代付通道列表</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/oilCard_order_list' }">油卡通道列表</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row :gutter="10">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <el-card class="box-card reset-card">
           <div slot="header" class="clearfix">
-            <span>代付通道列表</span>
+            <span>油卡通道列表</span>
           </div>
           <p>
             <el-button
@@ -16,7 +16,7 @@
               style="margin-left:10px;"
               type="info"
               @click="addType"
-            >新增代付通道</el-button>
+            >新增油卡通道</el-button>
           </p>
           <el-table
             ref="table"

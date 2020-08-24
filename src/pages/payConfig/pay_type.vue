@@ -22,7 +22,7 @@
             <el-table-column prop="payTypeName" label="支付类型名称" min-width="110"></el-table-column>
             <el-table-column prop="type" label="类别" min-width="120">
               <template slot-scope="scope">
-                <span>{{scope.row.type == 1 ? '支付' : '代付'}}</span>
+                <span>{{scope.row.type == 1 ? '支付' : scope.row.type == 2 ? '代付' : '充缴'}}</span>
               </template>
             </el-table-column>
             <el-table-column prop="status" label="状态" min-width="100">

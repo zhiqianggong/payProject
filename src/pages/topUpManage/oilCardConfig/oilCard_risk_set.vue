@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/oilCard_order_list' }">代付通道列表</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/oilCard_order_list' }">油卡通道列表</el-breadcrumb-item>
       <el-breadcrumb-item>风控配置</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row :gutter="10">

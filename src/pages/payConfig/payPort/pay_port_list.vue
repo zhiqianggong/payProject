@@ -15,7 +15,7 @@
               class="green"
               type="info"
               @click="addType"
-            >新增支付接口类型</el-button>
+            >新增支付接口</el-button>
           </p>
           <el-table ref="table" :data="tableData" style="width: 100%;" v-loading="loading" border>
             <el-table-column prop="ifCode" label="接口代码" min-width="170"></el-table-column>

@@ -1,14 +1,14 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/oilCard_order_list' }">代付通道列表</el-breadcrumb-item>
-      <el-breadcrumb-item>新增代付通道</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/oilCard_order_list' }">油卡通道列表</el-breadcrumb-item>
+      <el-breadcrumb-item>新增油卡通道</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row :gutter="10">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>新增代付通道</span>
+            <span>新增油卡通道</span>
             <span style="color: red;font-size: 13px;padding-left:15px;">带 * 选项为必填项</span>
           </div>
           <el-row :gutter="10">

@@ -1,19 +1,19 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/payment_order' }">代付订单列表</el-breadcrumb-item>
-      <el-breadcrumb-item>代付订单详情</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/payment_order' }">话费订单列表</el-breadcrumb-item>
+      <el-breadcrumb-item>话费订单详情</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row :gutter="10">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>代付订单详情</span>
+            <span>话费订单详情</span>
           </div>
           <el-row :gutter="10">
             <el-form :model="detaliFrom">
               <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-                <el-form-item label="代付订单号" label-width="130px">
+                <el-form-item label="话费订单号" label-width="130px">
                   <el-input v-model="detaliFrom.agentpayOrderId" disabled></el-input>
                 </el-form-item>
               </el-col>
@@ -23,7 +23,7 @@
                 </el-form-item>
               </el-col>
               <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-                <el-form-item label="代付批次号" label-width="130px">
+                <el-form-item label="话费批次号" label-width="130px">
                   <el-input v-model="detaliFrom.parentAgentId" disabled></el-input>
                 </el-form-item>
               </el-col>
@@ -33,12 +33,12 @@
                 </el-form-item>
               </el-col>
               <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-                <el-form-item label="代付金额(元)" label-width="130px">
+                <el-form-item label="话费金额(元)" label-width="130px">
                   <el-input v-model="detaliFrom.amount" disabled></el-input>
                 </el-form-item>
               </el-col>
               <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-                <el-form-item label="代付手续费(元)" label-width="130px">
+                <el-form-item label="话费手续费(元)" label-width="130px">
                   <el-input v-model="detaliFrom.fee"></el-input>
                 </el-form-item>
               </el-col>
@@ -201,7 +201,7 @@ export default {
           key: "10",
         },
         {
-          name: "代付余额",
+          name: "话费余额",
           key: "11",
         },
         {
@@ -217,7 +217,7 @@ export default {
           key: "20",
         },
         {
-          name: "代付",
+          name: "话费",
           key: "21",
         },
         {
@@ -251,7 +251,7 @@ export default {
           key: "5",
         },
         {
-          name: "代付",
+          name: "话费",
           key: "6",
         },
       ],

@@ -2,13 +2,13 @@
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/pay_port_list' }">支付接口列表</el-breadcrumb-item>
-      <el-breadcrumb-item>新增支付接口类型</el-breadcrumb-item>
+      <el-breadcrumb-item>新增支付接口</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row :gutter="10">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>新增支付接口类型</span>
+            <span>新增支付接口</span>
           </div>
           <el-row :gutter="10">
             <el-form :model="addTypeFrom">

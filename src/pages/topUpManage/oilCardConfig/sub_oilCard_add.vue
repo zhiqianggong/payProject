@@ -1,9 +1,9 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/oilCard_order_list' }">代付通道列表</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/oilCard_order_list' }">油卡通道列表</el-breadcrumb-item>
       <el-breadcrumb-item @click="toPayList">
-        <router-link v-bind="{to:'/oilCard_sub_account'+'?id='+$route.query.id}">代付通道子账户</router-link>
+        <router-link v-bind="{to:'/oilCard_sub_account'+'?id='+$route.query.id}">油卡通道子账户</router-link>
       </el-breadcrumb-item>
       <el-breadcrumb-item :to="{ path: '/config_mec' }">账户信息</el-breadcrumb-item>
     </el-breadcrumb>

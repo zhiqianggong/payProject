@@ -193,29 +193,29 @@ export default {
           ],
         },
         {
-          resourceId: 135,
-          icon: 'el-icon-s-finance',
-          list: [
-            {
-              resourceId: 136,
-              name: "oilCard_order",
-            },
-            {
-              resourceId: 137,
-              name: "oilCard_order_list",
-            },
-          ],
-        },
-        {
           resourceId: 138,
           icon: 'el-icon-s-finance',
           list: [
             {
               resourceId: 139,
-              name: "telephone_order",
+              name: "oilCard_order",
             },
             {
               resourceId: 140,
+              name: "oilCard_order_list",
+            },
+          ],
+        },
+        {
+          resourceId: 135,
+          icon: 'el-icon-s-finance',
+          list: [
+            {
+              resourceId: 136,
+              name: "telephone_order",
+            },
+            {
+              resourceId: 137,
               name: "telephone_order_list",
             },
           ],

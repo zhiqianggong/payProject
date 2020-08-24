@@ -1,14 +1,14 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/telephone_order_list' }">代付通道列表</el-breadcrumb-item>
-      <el-breadcrumb-item>代付通道子账户</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/telephone_order_list' }">话费通道列表</el-breadcrumb-item>
+      <el-breadcrumb-item>话费通道子账户</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row :gutter="10">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <el-card class="box-card reset-card">
           <div slot="header" class="clearfix">
-            <span>代付通道子账户</span>
+            <span>话费通道子账户</span>
           </div>
           <p>
             <el-button

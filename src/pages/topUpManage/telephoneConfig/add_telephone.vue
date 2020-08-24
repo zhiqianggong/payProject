@@ -8,7 +8,7 @@
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>新增代付通道</span>
+            <span>新增话费通道</span>
             <span style="color: red;font-size: 13px;padding-left:15px;">带 * 选项为必填项</span>
           </div>
           <el-row :gutter="10">

@@ -1,13 +1,13 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/payment_order' }">代付订单列表</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/payment_order' }">油卡订单列表</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row :gutter="10">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <el-card class="box-card reset-card">
           <div slot="header" class="clearfix">
-            <span>代付订单列表</span>
+            <span>油卡订单列表</span>
           </div>
           <p>
             <el-date-picker
@@ -48,7 +48,7 @@
             <el-input
               size="small"
               style="width:150px; margin: 0 5px 5px 0"
-              placeholder="代付单号"
+              placeholder="油卡单号"
               prefix-icon="el-icon-search"
               v-model="searchTable.agentpayOrderId"
             ></el-input>
@@ -63,9 +63,9 @@
               style="width:150px; margin: 0 5px 5px 0"
               size="small"
               v-model="searchTable.agentpayChannel"
-              placeholder="代付渠道"
+              placeholder="油卡渠道"
             >
-              <el-option label="代付渠道" value></el-option>
+              <el-option label="油卡渠道" value></el-option>
               <el-option label="商户后台" value="1"></el-option>
               <el-option label="API接口" value="2"></el-option>
             </el-select>
@@ -98,11 +98,11 @@
               ：{{detailBox.allTotalCount ? detailBox.allTotalCount : 0}}
             </span>
             <span style="margin-right:10px;" class="amount green">
-              <span>代付金额</span>
+              <span>油卡金额</span>
               ：￥{{detailBox.allTotalAmount ? detailBox.allTotalAmount / 100 : 0}}
             </span>
             <span style="margin-right:10px;" class="amount yellow">
-              <span>代付费用</span>
+              <span>油卡费用</span>
               ：￥{{detailBox.allTotalFee ? detailBox.allTotalFee / 100 : 0}}
             </span>
             <span style="margin-right:10px;" class="amount red">
@@ -112,11 +112,11 @@
           </el-alert>
           <el-table ref="table" :data="tableData" style="width: 100%" v-loading="loading" border>
             <el-table-column prop="mchId" label="商户ID" min-width="100"></el-table-column>
-            <el-table-column prop="agentpayOrderId" label="代付单号" min-width="220"></el-table-column>
+            <el-table-column prop="agentpayOrderId" label="油卡单号" min-width="220"></el-table-column>
             <el-table-column prop="mchOrderNo" label="商户单号" min-width="240"></el-table-column>
             <el-table-column prop="accountName" label="账户名" min-width="120"></el-table-column>
             <el-table-column prop="accountNo" label="账户" min-width="120"></el-table-column>
-            <el-table-column prop="amount" label="代付金额(元)" min-width="110">
+            <el-table-column prop="amount" label="油卡金额(元)" min-width="110">
               <template slot-scope="scope">{{amountFormat(scope.row.amount)}}</template>
             </el-table-column>
             <el-table-column prop="fee" label="手续费(元)" width="100">
@@ -128,7 +128,7 @@
                 <span>{{scope.row.status | typeFilter(typeBox)}}</span>
               </template>
             </el-table-column>
-            <el-table-column prop="agentpayChannel" label="代付渠道" min-width="90">
+            <el-table-column prop="agentpayChannel" label="油卡渠道" min-width="90">
               <template slot-scope="scope">
                 <span>{{scope.row.agentpayChannel == 1 ? '商户后台' : 'API接口'}}</span>
               </template>
@@ -167,7 +167,7 @@
         </el-card>
       </el-col>
     </el-row>
-    <el-dialog title="代付补单" :visible.sync="dialogVisible" width="200" :before-close="handleClose">
+    <el-dialog title="油卡补单" :visible.sync="dialogVisible" width="200" :before-close="handleClose">
       <el-form :model="modifyDetail" status-icon label-width="100px" class="demo-ruleForm">
         <el-form-item label="状态修改为">
           <el-radio-group v-model="modifyDetail.reissueStatus">

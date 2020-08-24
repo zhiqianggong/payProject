@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/telephone_order_list' }">代付通道列表</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/telephone_order_list' }">话费通道列表</el-breadcrumb-item>
       <el-breadcrumb-item>支付产品配置</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row :gutter="10">

@@ -1,9 +1,9 @@
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/telephone_order_list' }">代付通道列表</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/telephone_order_list' }">话费通道列表</el-breadcrumb-item>
       <el-breadcrumb-item @click="toPayList">
-        <router-link v-bind="{to:'/telephone_sub_account'+'?id='+$route.query.id}">代付通道子账户</router-link>
+        <router-link v-bind="{to:'/telephone_sub_account'+'?id='+$route.query.id}">话费通道子账户</router-link>
       </el-breadcrumb-item>
       <el-breadcrumb-item>子账户风控配置</el-breadcrumb-item>
     </el-breadcrumb>
