@@ -1,24 +1,28 @@
 <template>
   <div>
+    <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{ path: '/agentList' }">代理商列表</el-breadcrumb-item>
+      <el-breadcrumb-item>修改代理商</el-breadcrumb-item>
+    </el-breadcrumb>
     <el-row :gutter="10">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span>
-              修改商户
+              修改代理商
               <span style="color: red;font-size: 13px;padding-left:15px;">带 * 选项为必填项</span>
             </span>
           </div>
-          <el-alert class="reset-hint" title="用户管理" type="success" :closable="false"></el-alert>
+          <el-alert class="reset-hint" title="基本信息" type="success" :closable="false"></el-alert>
           <el-row :gutter="10">
             <el-form :model="changeMecFrom">
               <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="start">
-                <el-form-item label="商户名称" label-width="130px">
+                <el-form-item label="代理商名称" label-width="130px">
                   <el-input v-model="changeMecFrom.name"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-                <el-form-item label="所属代理商" label-width="130px" class="reset-select">
+                <el-form-item label="所属总代理" label-width="130px" class="reset-select">
                   <el-select v-model="changeMecFrom.agentId" placeholder="请选择">
                     <el-option label="区域一" value="shanghai"></el-option>
                     <el-option label="区域二" value="beijing"></el-option>
@@ -26,12 +30,17 @@
                 </el-form-item>
               </el-col>
               <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="start">
-                <el-form-item label="用户名" label-width="130px">
+                <el-form-item label="用户登录名" label-width="130px">
                   <el-input v-model="changeMecFrom.userName"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="start">
-                <el-form-item label="邮箱" label-width="130px">
+                <el-form-item label="真实姓名" label-width="130px">
+                  <el-input v-model="changeMecFrom.email"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="start">
+                <el-form-item label="身份证号" label-width="130px">
                   <el-input v-model="changeMecFrom.email"></el-input>
                 </el-form-item>
               </el-col>
@@ -44,7 +53,66 @@
                 </el-form-item>
               </el-col>
               <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <el-form-item label="座机号码" label-width="130px">
+                  <el-input v-model="changeMecFrom.mchRate"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <el-form-item label="QQ号" label-width="130px">
+                  <el-input v-model="changeMecFrom.mchRate"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <el-form-item label="邮箱" label-width="130px">
+                  <el-input v-model="changeMecFrom.mchRate"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <el-form-item label="通讯地址" label-width="130px">
+                  <el-input v-model="changeMecFrom.mchRate"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
                 <el-form-item label="线下充值费率(%)" label-width="130px">
+                  <el-input v-model="changeMecFrom.mchRate"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <el-form-item label="状态" label-width="130px">
+                  <el-radio-group v-model="changeMecFrom.googleAuthStatus">
+                    <el-radio border label="1">开启</el-radio>
+                    <el-radio border label="0">关闭</el-radio>
+                  </el-radio-group>
+                </el-form-item>
+              </el-col>
+              <el-alert class="reset-hint" title="银行账号" type="success" :closable="false"></el-alert>
+              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <el-form-item label="开户行名称" label-width="130px">
+                  <el-input v-model="changeMecFrom.mchRate"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <el-form-item label="开户网点名称" label-width="130px">
+                  <el-input v-model="changeMecFrom.mchRate"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <el-form-item label="账户名" label-width="130px">
+                  <el-input v-model="changeMecFrom.mchRate"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <el-form-item label="账户号" label-width="130px">
+                  <el-input v-model="changeMecFrom.mchRate"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <el-form-item label="开户所在省" label-width="130px">
+                  <el-input v-model="changeMecFrom.mchRate"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+                <el-form-item label="开户所在市" label-width="130px">
                   <el-input v-model="changeMecFrom.mchRate"></el-input>
                 </el-form-item>
               </el-col>
@@ -85,66 +153,6 @@
                   <el-input
                     v-model="changeMecFrom.payPassword"
                     placeholder="若修改请输入新密码，8-16位的字母和数字组合"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-                <el-form-item label="登录IP白名单" label-width="130px">
-                  <el-input
-                    type="textarea"
-                    :rows="2"
-                    placeholder="请输入登录白名单,多个IP半角逗号分隔"
-                    v-model="changeMecFrom.loginWhiteIp"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-                <el-form-item label="登录IP黑名单" label-width="130px">
-                  <el-input
-                    type="textarea"
-                    :rows="2"
-                    placeholder="请输入登录黑名单,多个IP半角逗号分隔"
-                    v-model="changeMecFrom.loginBlackIp"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-                <el-form-item label="支付IP白名单" label-width="130px">
-                  <el-input
-                    type="textarea"
-                    :rows="2"
-                    placeholder="请输入支付白名单,多个IP半角逗号分隔"
-                    v-model="changeMecFrom.payWhiteIp"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-                <el-form-item label="支付IP黑名单" label-width="130px">
-                  <el-input
-                    type="textarea"
-                    :rows="2"
-                    placeholder="请输入支付黑名单,多个IP半角逗号分隔"
-                    v-model="changeMecFrom.payBlackIp"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-                <el-form-item label="代付IP白名单" label-width="130px">
-                  <el-input
-                    type="textarea"
-                    :rows="2"
-                    placeholder="请输入代付白名单,多个IP半角逗号分隔"
-                    v-model="changeMecFrom.agentpayWhiteIp"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-                <el-form-item label="代付IP黑名单" label-width="130px">
-                  <el-input
-                    type="textarea"
-                    :rows="2"
-                    placeholder="请输入代付黑名单,多个IP半角逗号分隔"
-                    v-model="changeMecFrom.agentpayBlackIp"
                   ></el-input>
                 </el-form-item>
               </el-col>

@@ -10,16 +10,9 @@
             <el-input
               size="small"
               style="width:150px; margin: 0 5px 5px 0"
-              placeholder="应用ID"
+              placeholder="流水ID"
               prefix-icon="el-icon-search"
               v-model="searchTable.appId"
-            ></el-input>
-            <el-input
-              size="small"
-              style="width:150px; margin: 0 5px 5px 0"
-              placeholder="商户ID"
-              prefix-icon="el-icon-search"
-              v-model="mchId"
             ></el-input>
             <el-button
               size="small"
@@ -32,33 +25,15 @@
             </el-button>
           </p>
           <el-table ref="table" :data="tableData" style="width: 100%" v-loading="loading" border>
-            <el-table-column prop="mchId" label="商户id" min-width="100"></el-table-column>
-            <el-table-column prop="appId" label="商户应用Id" min-width="110">
-              <template slot-scope="scope">
-                <el-popover trigger="hover" placement="top">
-                  <p>{{ scope.row.appId }}</p>
-                  <div
-                    style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"
-                    slot="reference"
-                    class="name-wrapper"
-                  >
-                    <span>{{ scope.row.appId }}</span>
-                  </div>
-                </el-popover>
-              </template>
-            </el-table-column>
-            <el-table-column prop="appName" label="商户应用名称" min-width="120"></el-table-column>
-            <el-table-column prop="status" label="状态" min-width="65">
-              <template slot-scope="scope">
-                <span>{{scope.row.status | typeFilter}}</span>
-              </template>
-            </el-table-column>
-            <el-table-column prop="createTime" label="创建时间" min-width="150">
-              <template slot-scope="scope">
-                <span>{{getLocalTime(scope.row.createTime)}}</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="操作" style="text-align: center;" min-width="80">
+            <el-table-column prop="mchId" label="代理商ID" min-width="100"></el-table-column>
+            <el-table-column prop="appId" label="变更前余额(元)" min-width="110"></el-table-column>
+            <el-table-column prop="appName" label="变更金额(元)" min-width="120"></el-table-column>
+            <el-table-column prop="status" label="变更后余额(元)" min-width="125"></el-table-column>
+            <el-table-column prop="createTime" label="业务类型" min-width="150"></el-table-column>
+            <el-table-column prop="createTime" label="业务类目" min-width="150"></el-table-column>
+            <el-table-column prop="createTime" label="业务订单" min-width="150"></el-table-column>
+            <el-table-column prop="createTime" label="时间" min-width="150"></el-table-column>
+            <!-- <el-table-column label="操作" style="text-align: center;" min-width="80">
               <template slot-scope="scope">
                 <el-button
                   class="reset-button green"
@@ -66,7 +41,7 @@
                   @click="searchDetail(scope.row)"
                 >查看</el-button>
               </template>
-            </el-table-column>
+            </el-table-column>-->
           </el-table>
           <el-pagination
             class="paginationStyle"
@@ -122,7 +97,7 @@ export default {
       this.loading = true;
       this.axios({
         method: "post",
-        url: "/api/app/list",
+        url: "/api/agent_account/history_list",
         data: {
           body: {
             appId: this.searchTable.appId,
@@ -138,6 +113,7 @@ export default {
       })
         .then((res) => {
           this.loading = false;
+          this.tableData = res.data.body
           if (res.data.code == 200) {
             this.tableData = res.data.body.mchAppQueryList;
             this.pageTotal = res.data.body.count;
@@ -146,6 +122,7 @@ export default {
           }
         })
         .catch((err) => {
+          this.loading = false;
           console.log(err);
         });
     },

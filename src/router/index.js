@@ -119,6 +119,26 @@ Vue.use(Router);
         component: () => import('@/pages/agentManage/agent/addAgent')
     },
     {
+        path: '/agent_pay_list',
+        name: 'agent_pay_list',
+        component: () => import('@/pages/agentManage/agent/agentPay/agent_pay_list')
+    },
+    {
+        path: '/agent_pay_config',
+        name: 'agent_pay_config',
+        component: () => import('@/pages/agentManage/agent/agentPay/agent_pay_config')
+    },
+    {
+        path: '/agent_payment_list',
+        name: 'agent_payment_list',
+        component: () => import('@/pages/agentManage/agent/agentPayment/agent_payment_list')
+    },
+    {
+        path: '/agent_payment_config',
+        name: 'agent_payment_config',
+        component: () => import('@/pages/agentManage/agent/agentPayment/agent_payment_config')
+    },
+    {
         path: '/changeAgent',
         name: 'changeAgent',
         component: () => import('@/pages/agentManage/agent/changeAgent')

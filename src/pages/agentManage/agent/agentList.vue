@@ -34,11 +34,12 @@
             </el-button>
           </p>
           <el-table ref="table" :data="tableData" style="width: 100%" v-loading="loading" border>
-            <el-table-column prop="mchId" label="商户id" min-width="100"></el-table-column>
-            <el-table-column prop="agentId" label="代理商ID" min-width="100"></el-table-column>
-            <el-table-column prop="mchRate" label="商户费率" min-width="100"></el-table-column>
-            <el-table-column prop="name" label="商户名称" min-width="100"></el-table-column>
-            <el-table-column prop="status" label="商户状态" width="100">
+            <el-table-column prop="mchId" label="代理商ID" min-width="100"></el-table-column>
+            <el-table-column prop="agentId" label="代理商名称" min-width="100"></el-table-column>
+            <el-table-column prop="mchRate" label="代理商等级" min-width="100"></el-table-column>
+            <el-table-column prop="name" label="总代理ID" min-width="100"></el-table-column>
+            <el-table-column prop="name" label="代理商余额" min-width="100"></el-table-column>
+            <el-table-column prop="status" label="状态" width="100">
               <template slot-scope="scope">
                 <el-switch
                   class="switchStyle"
@@ -54,18 +55,6 @@
                 ></el-switch>
               </template>
             </el-table-column>
-            <el-table-column prop="balance" label="账户余额" min-width="90">
-              <template slot-scope="scope">
-                {{amountFormat(scope.row.balance)}}
-              </template>
-            </el-table-column>
-            <el-table-column prop="agentpayBalance" label="代付金额" min-width="90">
-              <template slot-scope="scope">
-                {{amountFormat(scope.row.agentpayBalance)}}
-              </template>
-            </el-table-column>
-            <el-table-column prop="securityMoney" label="保证金" min-width="80"></el-table-column>
-            <el-table-column prop="userName" label="商户名称" width="100"></el-table-column>
             <el-table-column label="操作" style="text-align: center;" min-width="260">
               <template slot-scope="scope">
                 <el-button
@@ -81,12 +70,12 @@
                 <el-button
                   class="reset-button green"
                   type="success"
-                  @click="handleEdit(scope.$index, scope.row)"
+                  @click="toPay(scope.$index, scope.row)"
                 >支付</el-button>
                 <el-button
                   class="reset-button green"
                   type="success"
-                  @click="handleEdit(scope.$index, scope.row)"
+                  @click="toPayment(scope.$index, scope.row)"
                 >代付</el-button>
                 <el-button
                   class="reset-button green"
@@ -113,7 +102,7 @@
     <el-dialog
       :title="amountTitle"
       :visible.sync="dialogAmount"
-      width="600px"
+      width="650px"
       :before-close="handleClose"
     >
       <el-row :gutter="10">
@@ -189,9 +178,6 @@ export default {
     };
   },
   methods: {
-    handleEdit(index, row) {
-      console.log(index, row);
-    },
     handleDelete(index, row) {
       console.log(index, row);
     },
@@ -400,6 +386,12 @@ export default {
     },
     settleAccount(index, row) {
       this.$router.push({ name: "settleAgent", query: { id: row.mchId } });
+    },
+    toPayment(index, row) {
+      this.$router.push({ name: "agent_payment_list", query: { id: row.mchId } });
+    },
+    toPay(index, row) {
+      this.$router.push({ name: "agent_pay_list", query: { id: row.mchId } });
     },
   },
   created() {
