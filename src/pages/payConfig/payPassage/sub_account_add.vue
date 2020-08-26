@@ -110,6 +110,7 @@ export default {
       detailList: {
         accountName: "",
         passageMchId: "",
+        payPassageId: "",
         pollWeight: "",
         remark: "",
         status: "1",
@@ -164,9 +165,9 @@ export default {
         data: {
           body: {
             accountName: this.detailList.accountName,
-            id: this.$route.query.id,
+            payPassageId: this.$route.query.id,
             param: JSON.stringify(this.param),
-            passageMchId: this.$route.query.payPassageId,
+            passageMchId: this.detailList.passageMchId,
             pollWeight: this.detailList.pollWeight,
             remark: this.detailList.remark,
             status: this.detailList.status,
@@ -181,6 +182,14 @@ export default {
           this.messageInfo(res);
           if (res.data.code == 200) {
             this.getUserDetail1();
+            this.detailList = {
+              accountName: "",
+              passageMchId: "",
+              payPassageId: "",
+              pollWeight: "",
+              remark: "",
+              status: "1",
+            };
           }
         })
         .catch((err) => {
@@ -199,7 +208,7 @@ export default {
     this.dataList1 = JSON.parse(this.detailList1.param);
     if (this.dataList1 instanceof Array && this.dataList1.length > 0) {
       for (let i = 0; i <= this.dataList1.length; i++) {
-        this.dataList1[i].type = '';
+        this.dataList1[i].type = "";
       }
     }
   },

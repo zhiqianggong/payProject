@@ -23,8 +23,8 @@
               <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
                 <el-form-item label="风控模式" label-width="130px">
                   <el-radio-group v-model="changeMecFrom.riskMode">
-                    <el-radio border label="1">开启</el-radio>
-                    <el-radio border label="2">关闭</el-radio>
+                    <el-radio border label="1">继承通道</el-radio>
+                    <el-radio border label="2">自定义</el-radio>
                   </el-radio-group>
                 </el-form-item>
               </el-col>

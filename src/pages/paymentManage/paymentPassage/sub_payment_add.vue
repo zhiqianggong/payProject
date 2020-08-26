@@ -164,10 +164,10 @@ export default {
         data: {
           body: {
             accountName: this.detailList.accountName,
-            agentpayPassageId: this.$route.query.id,
+            agentpayPassageId: Number(this.$route.query.id),
             param: JSON.stringify(this.param),
-            passageMchId: this.$route.query.payPassageId,
-            pollWeight: this.detailList.pollWeight,
+            passageMchId: this.detailList.passageMchId,
+            pollWeight: Number(this.detailList.pollWeight),
             remark: this.detailList.remark,
             status: this.detailList.status,
           },
@@ -180,6 +180,13 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
+            this.detailList = {
+              accountName: "",
+              passageMchId: "",
+              pollWeight: "",
+              remark: "",
+              status: "1",
+            };
             this.getUserDetail1();
           }
         })
@@ -199,7 +206,7 @@ export default {
     this.dataList1 = JSON.parse(this.detailList1.param);
     if (this.dataList1 instanceof Array && this.dataList1.length > 0) {
       for (let i = 0; i <= this.dataList1.length; i++) {
-        this.dataList1[i].type = '';
+        this.dataList1[i].type = "";
       }
     }
   },
