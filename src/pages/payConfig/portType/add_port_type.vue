@@ -99,14 +99,15 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.addTypeFrom = {
-              ifTypeCode: "",
-              ifTypeName: "",
-              param: "",
-              remark: "",
-              status: "1",
-              whiteIp: "",
-            };
+            // this.addTypeFrom = {
+            //   ifTypeCode: "",
+            //   ifTypeName: "",
+            //   param: "",
+            //   remark: "",
+            //   status: "1",
+            //   whiteIp: "",
+            // };
+            this.$router.push("port_type_list");
           }
         })
         .catch((err) => {

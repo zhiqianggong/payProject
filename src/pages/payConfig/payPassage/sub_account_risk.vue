@@ -75,18 +75,20 @@
                 <el-form-item class="reset-data" label="交易时间" label-width="130px">
                   <el-time-picker
                     placeholder="起始时间"
-                    v-model="changeMecFrom.createTime"
+                    v-model="changeMecFrom.tradeStartTime"
+                    value-format="HH:mm:ss"
                     :picker-options="{
                       selectableRange: '00:00:00 - 23:59:59'
                     }"
                   ></el-time-picker>
                   <el-time-picker
-                  arrow-control
+                    arrow-control
                     placeholder="结束时间"
-                    v-model="changeMecFrom.updateTime"
+                    v-model="changeMecFrom.tradeEndTime"
+                    value-format="HH:mm:ss"
                     :picker-options="{
                       selectableRange: '00:00:00 - 23:59:59',
-                      minTime: changeMecFrom.createTime
+                      minTime: changeMecFrom.tradeStartTime
                     }"
                   ></el-time-picker>
                 </el-form-item>
@@ -133,7 +135,9 @@ export default {
         updateTime: "",
         createTime: "",
         riskMode: "",
-        accountName: ""
+        accountName: "",
+        tradeEndTime: "",
+        tradeStartTime: "",
       },
       detailList: null,
       tableData: [],
@@ -186,7 +190,7 @@ export default {
     submitForm() {
       this.axios({
         method: "post",
-        url: "/api/config/pay_passage_account/update",
+        url: "/api/config/pay_passage_account/updateRisk",
         data: {
           body: {
             id: this.$route.query.id,
@@ -195,8 +199,8 @@ export default {
             minEveryAmount: this.changeMecFrom.minEveryAmount,
             passageName: this.changeMecFrom.passageName,
             riskStatus: this.changeMecFrom.riskStatus,
-            updateTime: this.changeMecFrom.updateTime,
-            createTime: this.changeMecFrom.createTime,
+            tradeStartTime: this.changeMecFrom.tradeStartTime,
+            tradeEndTime: this.changeMecFrom.tradeEndTime,
             riskMode: this.changeMecFrom.riskMode,
           },
           header: {
@@ -208,7 +212,11 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.getUserDetail();
+            // this.getUserDetail();
+            this.$router.push({
+              name: "sub_account",
+              query: { id: this.$route.query.payPassageId },
+            });
           }
         })
         .catch((err) => {
@@ -216,8 +224,11 @@ export default {
         });
     },
     toPayList() {
-        console.log(this.$route.query.id)
-      this.$router.push({ name: "sub_account", query: { id: this.$route.query.payPassageId } });
+      console.log(this.$route.query.id);
+      this.$router.push({
+        name: "sub_account",
+        query: { id: this.$route.query.payPassageId },
+      });
     },
   },
   created() {

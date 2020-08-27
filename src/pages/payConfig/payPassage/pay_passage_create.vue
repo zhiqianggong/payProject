@@ -116,14 +116,15 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.addTypeFrom = {
-              ifCode: "",
-              passageName: "",
-              passageRate: 0,
-              payType: "",
-              remark: "",
-              status: "1",
-            };
+            // this.addTypeFrom = {
+            //   ifCode: "",
+            //   passageName: "",
+            //   passageRate: 0,
+            //   payType: "",
+            //   remark: "",
+            //   status: "1",
+            // };
+            this.$router.push("pay_passage_config");
           }
         })
         .catch((err) => {

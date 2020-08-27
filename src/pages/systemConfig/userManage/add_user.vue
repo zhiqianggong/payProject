@@ -112,15 +112,16 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.changeMecFrom = {
-              userName: "",
-              nickName: "",
-              passWord: "",
-              mobile: "",
-              email: "",
-              isSuperAdmin: "0",
-              status: "1",
-            };
+            // this.changeMecFrom = {
+            //   userName: "",
+            //   nickName: "",
+            //   passWord: "",
+            //   mobile: "",
+            //   email: "",
+            //   isSuperAdmin: "0",
+            //   status: "1",
+            // };
+            this.$router.push("user_list");
           }
         })
         .catch((err) => {

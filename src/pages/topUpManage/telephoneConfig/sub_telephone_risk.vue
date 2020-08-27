@@ -76,6 +76,7 @@
                   <el-time-picker
                     placeholder="起始时间"
                     v-model="changeMecFrom.createTime"
+                    value-format="HH:mm:ss"
                     :picker-options="{
                       selectableRange: '00:00:00 - 23:59:59',
                     }"
@@ -83,6 +84,7 @@
                   <el-time-picker
                     placeholder="结束时间"
                     arrow-control
+                    value-format="HH:mm:ss"
                     v-model="changeMecFrom.updateTime"
                     :picker-options="{
                       selectableRange: '00:00:00 - 23:59:59',

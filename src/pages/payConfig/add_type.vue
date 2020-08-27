@@ -88,12 +88,13 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.addTypeFrom = {
-              payTypeCode: "",
-              payTypeName: "",
-              status: "1",
-              type: "0",
-            };
+            // this.addTypeFrom = {
+            //   payTypeCode: "",
+            //   payTypeName: "",
+            //   status: "1",
+            //   type: "0",
+            // };
+            this.$router.push("pay_type");
           }
         })
         .catch((err) => {

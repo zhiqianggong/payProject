@@ -181,15 +181,19 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.getUserDetail1();
-            this.detailList = {
-              accountName: "",
-              passageMchId: "",
-              payPassageId: "",
-              pollWeight: "",
-              remark: "",
-              status: "1",
-            };
+            // this.getUserDetail1();
+            // this.detailList = {
+            //   accountName: "",
+            //   passageMchId: "",
+            //   payPassageId: "",
+            //   pollWeight: "",
+            //   remark: "",
+            //   status: "1",
+            // };
+            this.$router.push({
+              name: "sub_account",
+              query: { id: this.$route.query.payPassageId },
+            });
           }
         })
         .catch((err) => {

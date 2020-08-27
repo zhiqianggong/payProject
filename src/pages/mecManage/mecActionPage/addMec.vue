@@ -172,18 +172,7 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.addMecFrom = {
-              email: "",
-              mchRate: "",
-              mobile: "",
-              name: "",
-              securityMoney: "0",
-              userName: "",
-              balance: "0",
-              agentpayBalance: "0",
-              agentId: "",
-              status: "0",
-            };
+            this.$router.push('allMec');
           }
         })
         .catch((err) => {

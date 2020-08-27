@@ -134,7 +134,8 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.getUserDetail();
+            // this.getUserDetail();
+            this.$router.push("port_type_list");
           }
         })
         .catch((err) => {

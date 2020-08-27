@@ -10,7 +10,7 @@
       class="demo-ruleForm"
     >
       <el-form-item label="账号">
-        <el-input v-model.number="ruleForm.user" autocomplete="off"></el-input>
+        <el-input v-model.number="ruleForm.user" autocomplete="new-password"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="pass">
         <el-input type="password" v-model="ruleForm.pass"></el-input>

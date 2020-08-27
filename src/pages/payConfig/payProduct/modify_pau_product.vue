@@ -298,7 +298,8 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.getUserDetail();
+            // this.getUserDetail();
+            this.$router.push("pay_product_list");
           }
         })
         .catch((err) => {

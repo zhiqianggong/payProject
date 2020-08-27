@@ -54,6 +54,7 @@
                       :picker-options="{
                                 selectableRange: '00:00:00 - 23:59:59'
                             }"
+                      value-format="HH:mm:ss"
                       placeholder="开始时间"
                     ></el-time-picker>
                     <el-time-picker
@@ -63,6 +64,7 @@
                                 selectableRange: '00:00:00 - 23:59:59',
                                 minTime: modifyMecFrom.drawDayStartTime
                             }"
+                      value-format="HH:mm:ss"
                       placeholder="结束时间"
                     ></el-time-picker>
                   </el-form-item>
@@ -143,8 +145,8 @@ export default {
       modifyMecFrom: {
         allowDrawWeekDay: [],
         dayDrawTimes: 10,
-        drawDayEndTime: new Date(2016, 9, 10, 18, 40),
-        drawDayStartTime: new Date(2016, 9, 10, 18, 40),
+        drawDayEndTime: "",
+        drawDayStartTime: "",
         drawFeeLimit: 0,
         drawFlag: "1",
         drawMaxDayAmount: 0,
@@ -194,7 +196,7 @@ export default {
             mchId: this.$route.query.id,
             minDrawAmount: this.modifyMecFrom.minDrawAmount,
             name: this.modifyMecFrom.allowDrawWnameeekDay,
-            settConfigMode: this.modifyMecFrom.allosettConfigModeDrawWeekDay,
+            settConfigMode: this.modifyMecFrom.settConfigMode,
             settMode: this.modifyMecFrom.settMode,
             settType: this.modifyMecFrom.settType,
           },
@@ -207,26 +209,27 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.modifyMecFrom = {
-              allowDrawWeekDay: [],
-              dayDrawTimes: 10,
-              drawDayEndTime: new Date(2016, 9, 10, 18, 40),
-              drawDayStartTime: new Date(2016, 9, 10, 18, 40),
-              drawFeeLimit: 0,
-              drawFlag: "1",
-              drawMaxDayAmount: 0,
-              feeLevel: "",
-              feeRate: 0,
-              feeType: "2",
-              maxDrawAmount: 0,
-              mchId: 0,
-              minDrawAmount: 0,
-              name: "",
-              settConfigMode: "1",
-              settMode: "2",
-              settType: "0",
-            };
-            this.getUserDetail();
+            // this.modifyMecFrom = {
+            //   allowDrawWeekDay: [],
+            //   dayDrawTimes: 10,
+            //   drawDayEndTime: new Date(2016, 9, 10, 18, 40),
+            //   drawDayStartTime: new Date(2016, 9, 10, 18, 40),
+            //   drawFeeLimit: 0,
+            //   drawFlag: "1",
+            //   drawMaxDayAmount: 0,
+            //   feeLevel: "",
+            //   feeRate: 0,
+            //   feeType: "2",
+            //   maxDrawAmount: 0,
+            //   mchId: 0,
+            //   minDrawAmount: 0,
+            //   name: "",
+            //   settConfigMode: "1",
+            //   settMode: "2",
+            //   settType: "0",
+            // };
+            // this.getUserDetail();
+            this.$router.push("allMec");
           }
         })
         .catch((err) => {

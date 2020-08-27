@@ -210,8 +210,12 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.getUserDetail();
-            this.getUserDetail1();
+            // this.getUserDetail();
+            // this.getUserDetail1();
+            this.$router.push({
+              name: "payment_sub_account",
+              query: { id: this.$route.query.id },
+            });
           }
         })
         .catch((err) => {

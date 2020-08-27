@@ -169,8 +169,8 @@ export default {
         .then((res) => {
           if (res.data.code == 200) {
             this.detailList1 = res.data.body;
-            
-          console.log(2)
+
+            console.log(2);
           } else {
             this.messageInfo(res);
           }
@@ -208,8 +208,12 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.getUserDetail();
-            this.getUserDetail1();
+            // this.getUserDetail();
+            // this.getUserDetail1();
+            this.$router.push({
+              name: "sub_account",
+              query: { id: this.$route.query.payPassageId },
+            });
           }
         })
         .catch((err) => {

@@ -208,17 +208,19 @@ export default {
     },
     submitForm() {
       let arr = [];
-      this.curTableData.forEach((item) => {
-        this.tableData.forEach((tableList) => {
-          if (item.payPassageId == tableList.id) {
-            arr.push({
-              payPassageId: tableList.id,
-              weight: tableList.weight,
-            });
-          }
+      if (this.curTableData.length > 0) {
+        this.curTableData.forEach((item) => {
+          this.tableData.forEach((tableList) => {
+            if (item.payPassageId == tableList.id) {
+              arr.push({
+                payPassageId: tableList.id,
+                weight: tableList.weight,
+              });
+            }
+          });
         });
-      });
-      this.dataList.pollParam = JSON.stringify(arr);
+        this.dataList.pollParam = JSON.stringify(arr);
+      }
       this.axios({
         method: "post",
         url: "/api/mch_pay_passage/update",
@@ -247,7 +249,11 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.getUserDetail();
+            // this.getUserDetail();
+            this.$router.push({
+              name: "pay_passage_list",
+              query: { id: this.$route.query.id },
+            });
           }
         })
         .catch((err) => {
@@ -333,7 +339,7 @@ export default {
         .then((res) => {
           if (res.data.code == 200) {
             this.tableData = res.data.body;
-            
+
             let _this = this;
             _this.$nextTick(function () {
               _this.tableData.forEach((item) => {

@@ -99,7 +99,8 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.getUserDetail();
+            // this.getUserDetail();
+            this.$router.push("role_list");
           }
         })
         .catch((err) => {

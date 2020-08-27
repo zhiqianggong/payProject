@@ -186,7 +186,8 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.audit = "";
+            // this.audit = "";
+            this.$router.push("settlement_audit_list");
           }
         })
         .catch((err) => {

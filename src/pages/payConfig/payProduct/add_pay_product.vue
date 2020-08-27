@@ -97,12 +97,13 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.addTypeFrom = {
-              payType: "",
-              productName: "",
-              productType: "1",
-              status: "1",
-            };
+            // this.addTypeFrom = {
+            //   payType: "",
+            //   productName: "",
+            //   productType: "1",
+            //   status: "1",
+            // };
+            this.$router.push("pay_product_list");
           }
         })
         .catch((err) => {

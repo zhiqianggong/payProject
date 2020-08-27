@@ -274,30 +274,31 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.changeMecFrom = {
-              agentId: "",
-              agentpayBalance: 0,
-              agentpayBlackIp: "",
-              agentpayWhiteIp: "",
-              balance: 0,
-              email: "",
-              googleAuthStatus: "0",
-              loginBlackIp: "",
-              loginSecurityType: "1",
-              loginWhiteIp: "",
-              mchId: 0,
-              mchRate: "",
-              mobile: 0,
-              name: "",
-              password: "",
-              payBlackIp: "",
-              payPassword: "",
-              paySecurityType: "1",
-              payWhiteIp: "",
-              securityMoney: 0,
-              userName: "",
-            };
-            this.getUserDetail();
+            // this.changeMecFrom = {
+            //   agentId: "",
+            //   agentpayBalance: 0,
+            //   agentpayBlackIp: "",
+            //   agentpayWhiteIp: "",
+            //   balance: 0,
+            //   email: "",
+            //   googleAuthStatus: "0",
+            //   loginBlackIp: "",
+            //   loginSecurityType: "1",
+            //   loginWhiteIp: "",
+            //   mchId: 0,
+            //   mchRate: "",
+            //   mobile: 0,
+            //   name: "",
+            //   password: "",
+            //   payBlackIp: "",
+            //   payPassword: "",
+            //   paySecurityType: "1",
+            //   payWhiteIp: "",
+            //   securityMoney: 0,
+            //   userName: "",
+            // };
+            // this.getUserDetail();
+            this.$router.push('allMec');
           }
         })
         .catch((err) => {

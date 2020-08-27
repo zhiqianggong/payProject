@@ -180,14 +180,18 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.detailList = {
-              accountName: "",
-              passageMchId: "",
-              pollWeight: "",
-              remark: "",
-              status: "1",
-            };
-            this.getUserDetail1();
+            // this.detailList = {
+            //   accountName: "",
+            //   passageMchId: "",
+            //   pollWeight: "",
+            //   remark: "",
+            //   status: "1",
+            // };
+            // this.getUserDetail1();
+            this.$router.push({
+              name: "payment_sub_account",
+              query: { id: this.$route.query.id },
+            });
           }
         })
         .catch((err) => {

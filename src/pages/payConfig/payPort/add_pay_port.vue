@@ -142,17 +142,18 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.addTypeFrom = {
-              extra: "",
-              ifCode: "",
-              ifName: "",
-              ifTypeCode: "",
-              param: "",
-              payType: "",
-              remark: "",
-              scene: "",
-              status: "1",
-            };
+            // this.addTypeFrom = {
+            //   extra: "",
+            //   ifCode: "",
+            //   ifName: "",
+            //   ifTypeCode: "",
+            //   param: "",
+            //   payType: "",
+            //   remark: "",
+            //   scene: "",
+            //   status: "1",
+            // };
+            this.$router.push("pay_port_list");
           }
         })
         .catch((err) => {

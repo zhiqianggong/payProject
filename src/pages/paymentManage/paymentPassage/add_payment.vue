@@ -126,15 +126,16 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.addTypeFrom = {
-              feeType: "1",
-              passageName: "",
-              feeRate: "",
-              feeEvery: "",
-              status: "1",
-              ifCode: "",
-              remark: "",
-            };
+            // this.addTypeFrom = {
+            //   feeType: "1",
+            //   passageName: "",
+            //   feeRate: "",
+            //   feeEvery: "",
+            //   status: "1",
+            //   ifCode: "",
+            //   remark: "",
+            // };
+            this.$router.push("payment_order_list");
           }
         })
         .catch((err) => {

@@ -248,8 +248,9 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.remark = "";
-            this.getAppDetail();
+            // this.remark = "";
+            // this.getAppDetail();
+            this.$router.push("remit_list");
           }
         })
         .catch((err) => {
@@ -283,11 +284,12 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.remark = "";
-            this.agentpayPassageAccountId = "";
-            this.agentpayPassageId = ""
-            this.getFatherAccount();
-            this.getAppDetail();
+            // this.remark = "";
+            // this.agentpayPassageAccountId = "";
+            // this.agentpayPassageId = ""
+            // this.getFatherAccount();
+            // this.getAppDetail();
+            this.$router.push("remit_list");
           }
         })
         .catch((err) => {

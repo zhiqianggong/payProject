@@ -50,6 +50,7 @@
                       :picker-options="{
                                 selectableRange: '00:00:00 - 23:59:59'
                             }"
+                      value-format="HH:mm:ss"
                       placeholder="开始时间"
                     ></el-time-picker>
                     <el-time-picker
@@ -59,6 +60,7 @@
                                 selectableRange: '00:00:00 - 23:59:59',
                                 minTime: modifyMecFrom.drawDayStartTime
                             }"
+                      value-format="HH:mm:ss"
                       placeholder="结束时间"
                     ></el-time-picker>
                   </el-form-item>

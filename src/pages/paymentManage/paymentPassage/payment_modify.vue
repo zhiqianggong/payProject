@@ -223,7 +223,8 @@ export default {
         .then((res) => {
           this.messageInfo(res);
           if (res.data.code == 200) {
-            this.getUserDetail();
+            // this.getUserDetail();
+            this.$router.push("payment_order_list");
           }
         })
         .catch((err) => {
