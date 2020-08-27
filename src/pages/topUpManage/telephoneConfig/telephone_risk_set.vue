@@ -87,7 +87,7 @@ export default {
     getUserDetail() {
       this.axios({
         method: "post",
-        url: "/api/config/agentpay_passage/get",
+        url: "/api/config/recharge_passage/get",
         data: {
           body: {
             id: this.$route.query.id,
@@ -121,7 +121,7 @@ export default {
     submitForm() {
       this.axios({
         method: "post",
-        url: "/api/config/agentpay_passage/risk_update",
+        url: "/api/config/recharge_passage/risk_update",
         data: {
           body: {
             id: this.$route.query.id,
