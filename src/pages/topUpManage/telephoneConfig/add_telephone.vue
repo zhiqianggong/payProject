@@ -106,7 +106,7 @@ export default {
     submitForm() {
       this.axios({
         method: "post",
-        url: "/api/config/agentpay_passage/add",
+        url: "/api/config/recharge_passage/add",
         data: {
           body: {
             feeType: this.addTypeFrom.feeType,

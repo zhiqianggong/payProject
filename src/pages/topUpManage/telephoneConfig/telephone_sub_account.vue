@@ -110,10 +110,10 @@ export default {
       this.loading = true;
       this.axios({
         method: "post",
-        url: "/api/config/agentpay_passage_account/list",
+        url: "/api/config/recharge_passage_account/list",
         data: {
           body: {
-            agentpayPassageId: this.$route.query.id,
+            rechargePassageId: this.$route.query.id,
             pageIndex: this.currentPage,
             pageSize: this.pagesize,
           },
@@ -126,7 +126,7 @@ export default {
         .then((res) => {
           this.loading = false;
           if (res.data.code == 200 || res.data.msg == "成功") {
-            this.tableData = res.data.body.agentpayAccounts;
+            this.tableData = res.data.body.rechargeAccounts;
             this.pageTotal = res.data.body.count;
           } else {
             this.messageInfo(res);

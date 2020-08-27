@@ -29,7 +29,7 @@
               </el-col>
               <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
                 <el-form-item label="通道子账户" label-width="130px" class="reset-select">
-                  <el-select v-model="changeMecFrom.agentpayPassageId" placeholder="请选择">
+                  <el-select v-model="changeMecFrom.rechargePassageId" placeholder="请选择">
                     <el-option label="选择通道子账户" value></el-option>
                     <el-option
                       v-for="item in payAccountList"
@@ -92,8 +92,8 @@ export default {
   data() {
     return {
       changeMecFrom: {
-        agentpayPassageId: "",
-        agentpayPassageAccountId: "",
+        rechargePassageId: "",
+        rechargePassageAccountId: "",
         agentFeeEvery: "",
         maxEveryAmount: "",
         mchFeeEvery: "",
@@ -114,11 +114,11 @@ export default {
     getUserDetail() {
       this.axios({
         method: "post",
-        url: "/api/mch_agentpay_passage/get",
+        url: "/api/mch_recharge_passage/get",
         data: {
           body: {
             mchId: this.$route.query.id,
-            agentpayPassageId: this.$route.query.productId,
+            rechargePassageId: this.$route.query.rechargePassageId,
           },
           header: {
             token: sessionStorage.token,
@@ -132,9 +132,9 @@ export default {
             this.getPayAccount();
             this.changeMecFrom = {
               // String(this.dataList.agentpayPassageId)
-              agentpayPassageId: this.dataList.agentpayPassageAccountId,
+              rechargePassageId: this.dataList.rechargePassageAccountId,
               mchFeeType: this.dataList.mchFeeType,
-              agentpayPassageAccountId: this.dataList.agentpayPassageAccountId,
+              rechargePassageAccountId: this.dataList.rechargePassageAccountId,
               agentFeeEvery: this.dataList.agentFeeEvery,
               maxEveryAmount: this.dataList.maxEveryAmount,
               mchFeeEvery: "未设置",
@@ -153,13 +153,13 @@ export default {
     submitForm() {
       this.axios({
         method: "post",
-        url: "/api/mch_agentpay_passage/update",
+        url: "/api/mch_recharge_passage/update",
         data: {
           body: {
             id: this.dataList.id,
-            agentpayPassageAccountId: this.changeMecFrom
-              .agentpayPassageAccountId,
-            agentpayPassageId: Number(this.$route.query.productId),
+            rechargePassageAccountId: this.changeMecFrom
+              .rechargePassageAccountId,
+            rechargePassageId: Number(this.$route.query.rechargePassageId),
             isDefault: Number(this.changeMecFrom.isDefault),
             maxEveryAmount: this.changeMecFrom.maxEveryAmount,
             mchFeeEvery: Number(this.dataList.mchFeeEvery),
@@ -179,7 +179,7 @@ export default {
           if (res.data.code == 200) {
             this.getUserDetail();
             this.$router.push({
-              name: "agentpay_passage_list",
+              name: "recharge_passage_list",
               query: { id: this.$route.query.id },
             });
           }
@@ -190,14 +190,14 @@ export default {
     },
     toPayList() {
       this.$router.push({
-        name: "agentpay_passage_list",
+        name: "recharge_passage_list",
         query: { id: this.$route.query.id },
       });
     },
     getFatherAccount() {
       this.axios({
         method: "post",
-        url: "/api/config/common/agentpay_passage_all",
+        url: "/api/config/common/recharge_passage_all",
         data: {
           body: {},
           header: {
@@ -220,10 +220,10 @@ export default {
     getPayAccount() {
       this.axios({
         method: "post",
-        url: "/api/config/common/agentpay_passage_account",
+        url: "/api/config/common/recharge_passage_account",
         data: {
           body: {
-            agentpayPassageId: this.dataList.agentpayPassageId,
+            rechargePassageId: this.dataList.rechargePassageId,
           },
           header: {
             token: sessionStorage.token,

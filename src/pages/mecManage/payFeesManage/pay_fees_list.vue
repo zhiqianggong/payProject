@@ -11,7 +11,7 @@
             <span>冲缴通道</span>
           </div>
           <el-table ref="table" :data="tableData" style="width: 100%" v-loading="loading" border>
-            <el-table-column prop="agentpayPassageId" label="通道ID" min-width="100"></el-table-column>
+            <el-table-column prop="rechargePassageId" label="通道ID" min-width="100"></el-table-column>
             <el-table-column prop="passageName" label="通道名称" min-width="100"></el-table-column>-->
             <el-table-column prop="agentFeeEvery" label="代理商费率" min-width="110">
               <template slot-scope="scope">
@@ -85,7 +85,7 @@ export default {
       this.loading = true;
       this.axios({
         method: "post",
-        url: "/api/mch_agentpay_passage/list",
+        url: "/api/mch_recharge_passage/list",
         data: {
           body: {
             mchId: this.$route.query.id,
@@ -112,7 +112,7 @@ export default {
     toConfig(row) {
       this.$router.push({
         name: "pay_fees_config",
-        query: { id: row.mchId, productId: row.agentpayPassageId },
+        query: { id: row.mchId, rechargePassageId: row.rechargePassageId },
       });
     },
   },

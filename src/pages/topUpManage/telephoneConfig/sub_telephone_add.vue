@@ -129,10 +129,10 @@ export default {
       this.loading = true;
       return this.axios({
         method: "post",
-        url: "/api/config/agentpay_passage/pay_config_get",
+        url: "/api/config/recharge_passage/pay_config_get",
         data: {
           body: {
-            agentpayPassageId: this.$route.query.id,
+            rechargePassageId: this.$route.query.id,
           },
           header: {
             token: sessionStorage.token,
@@ -160,13 +160,13 @@ export default {
       });
       this.axios({
         method: "post",
-        url: "/api/config/agentpay_passage_account/add",
+        url: "/api/config/recharge_passage_account/add",
         data: {
           body: {
             accountName: this.detailList.accountName,
-            agentpayPassageId: this.$route.query.id,
+            rechargePassageId: this.$route.query.id,
             param: JSON.stringify(this.param),
-            passageMchId: this.$route.query.payPassageId,
+            passageMchId: this.detailList.passageMchId,
             pollWeight: this.detailList.pollWeight,
             remark: this.detailList.remark,
             status: this.detailList.status,

@@ -109,7 +109,7 @@ export default {
       this.loading = true;
       this.axios({
         method: "post",
-        url: "/api/config/agentpay_passage/list",
+        url: "/api/config/recharge_passage/list",
         data: {
           body: {
             pageIndex: this.currentPage,
@@ -137,7 +137,7 @@ export default {
     changeSwitch(row) {
       this.axios({
         method: "post",
-        url: "/api/config/agentpay_passage/update",
+        url: "/api/config/recharge_passage/update",
         data: {
           body: {
             id: row.id,

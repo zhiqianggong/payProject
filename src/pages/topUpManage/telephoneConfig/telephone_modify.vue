@@ -152,7 +152,7 @@ export default {
     getUserDetail() {
       this.axios({
         method: "post",
-        url: "/api/config/agentpay_passage/get",
+        url: "/api/config/recharge_passage/get",
         data: {
           body: {
             id: this.$route.query.id,
@@ -197,7 +197,7 @@ export default {
     submitForm() {
       this.axios({
         method: "post",
-        url: "/api/config/agentpay_passage/update",
+        url: "/api/config/recharge_passage/update",
         data: {
           body: {
             feeEvery: this.changeMecFrom.feeEvery * 100,
