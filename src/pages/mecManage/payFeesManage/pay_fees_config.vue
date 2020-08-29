@@ -3,7 +3,7 @@
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/allMec' }">商户列表</el-breadcrumb-item>
       <el-breadcrumb-item @click="toPayList">
-        <router-link v-bind="{to:'/pay_fees_list'+'?id='+$route.query.id}">冲缴通道</router-link>
+        <router-link v-bind="{to:'/recharge_passage_list'+'?id='+$route.query.id}">冲缴通道</router-link>
       </el-breadcrumb-item>
       <el-breadcrumb-item :to="{ path: '/config_mec' }">冲缴配置</el-breadcrumb-item>
     </el-breadcrumb>
@@ -16,7 +16,7 @@
           <el-row :gutter="10">
             <el-form :model="changeMecFrom">
               <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-                <el-form-item label="代付通道" label-width="130px" class="reset-select">
+                <el-form-item label="冲缴通道" label-width="130px" class="reset-select">
                   <el-select disabled v-model="changeMecFrom.passageName" placeholder="请选择">
                     <el-option
                       v-for="item in payFather"
